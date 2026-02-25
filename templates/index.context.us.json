@@ -1,0 +1,217 @@
+{
+  "parent": "index.json",
+  "context": {
+    "market": "us"
+  },
+  "sections": {
+    "featured_collection_BxMaU": {
+      "type": "featured-collection",
+      "disabled": false,
+      "settings": {
+        "title": "3 TO 7 DAYS DELIVERY!!",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "usa-3-to-7-days-delivery",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "header-98781928c087c8de98243d1bfb457c36": null,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "header-0e26a123974536f27ec47262cc9670e4": null,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "header-25e649d369e53b6e216d5281a30a5280": null,
+        "padding_top": 36,
+        "padding_bottom": 36
+      },
+      "blocks": {},
+      "block_order": [],
+      "name": "t:sections.featured-collection.presets.name"
+    },
+    "featured_product_i7k8m7": {
+      "type": "featured-product",
+      "disabled": false,
+      "settings": {
+        "product": "chillet-plush",
+        "color_scheme": "",
+        "secondary_background": false,
+        "header-564744a3aa1288164bbfb0fb9560da42": null,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "header-239e4d7b74ac0be13724c553251be452": null,
+        "padding_top": 36,
+        "padding_bottom": 36
+      },
+      "blocks": {
+        "custom_judjme_rating_WAQQr9": {
+          "type": "custom_judjme_rating",
+          "disabled": false,
+          "settings": {
+            "badge_text": "Trusted By 7,500+ Customers",
+            "badge_bg_color": "#00b975",
+            "badge_text_color": "#ffffff",
+            "star_color": "#00b975"
+          }
+        },
+        "text_7QexY6": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "judge_me_reviews_preview_badge_RUzzQg": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": false,
+          "settings": {
+            "paragraph-e3d0f6c89dd102abb073d87ed031af43": null,
+            "paragraph-663d3c2e71231d14142ccfe5412baf1e": null
+          }
+        },
+        "title_4VVnLy": {
+          "type": "title",
+          "disabled": false,
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "our_usp_KMPxkM": {
+          "type": "our_usp",
+          "disabled": false,
+          "settings": {
+            "bg_color": "#f1eefc",
+            "border_color": "#5b32f4",
+            "header-feb4a36a3cb03880ef338370e93b2357": null,
+            "text_1": "100% Cotton",
+            "icon_1": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"13\" height=\"10\" viewbox=\"0 0 13 10\" fill=\"none\">\n  <path d=\"M-0.000305176 6.15521C-0.000305176 7.76488 1.30565 9.07083 2.91532 9.07083H10.3664C11.7979 9.07083 12.958 7.91066 12.958 6.47917C12.958 5.22585 12.0671 4.17906 10.8847 3.94014C10.9677 3.7235 11.0143 3.4866 11.0143 3.23958C11.0143 2.16647 10.1436 1.29583 9.07053 1.29583C8.67165 1.29583 8.2991 1.41732 7.99134 1.62384C7.43049 0.651966 6.3837 0 5.18303 0C3.39316 0 1.94344 1.44971 1.94344 3.23958C1.94344 3.29425 1.94547 3.34892 1.94749 3.40359C0.81364 3.80246 -0.000305176 4.88367 -0.000305176 6.15521Z\" fill=\"#5B32F4\"><\/path>\n<\/svg>",
+            "header-027dad9cd33002e7ce8ab0cc4fdf9c0f": null,
+            "text_2": "Durable",
+            "icon_2": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"12\" height=\"13\" viewbox=\"0 0 12 13\" fill=\"none\">\n  <path d=\"M5.7129 0C5.8224 0 5.9319 0.0238037 6.03187 0.0690308L10.5141 1.97095C11.0378 2.19232 11.4282 2.70886 11.4258 3.33252C11.4139 5.69385 10.4427 10.0142 6.34132 11.978C5.9438 12.1685 5.48201 12.1685 5.08448 11.978C0.983104 10.0142 0.0119127 5.69385 1.08271e-05 3.33252C-0.00236954 2.70886 0.388011 2.19232 0.911693 1.97095L5.39631 0.0690308C5.49391 0.0238037 5.6034 0 5.7129 0ZM5.7129 1.59009V10.5879C8.99781 8.9978 9.88093 5.47723 9.90235 3.36584L5.7129 1.59009Z\" fill=\"#5B32F4\"><\/path>\n<\/svg>",
+            "header-aca33bcb6fcc9d57b3bb1a3c8f2a1e54": null,
+            "text_3": "Premium Quality",
+            "icon_3": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"13\" height=\"10\" viewbox=\"0 0 13 10\" fill=\"none\">\n  <path d=\"M6.53809 1.56576C6.7793 1.41764 6.9401 1.14893 6.9401 0.846354C6.9401 0.378743 6.56136 0 6.09375 0C5.62614 0 5.2474 0.378743 5.2474 0.846354C5.2474 1.15104 5.4082 1.41764 5.64941 1.56576L4.43701 3.99056C4.24447 4.37565 3.74512 4.48568 3.40869 4.21696L1.52344 2.70833C1.62923 2.56657 1.69271 2.39095 1.69271 2.20052C1.69271 1.73291 1.31396 1.35417 0.846354 1.35417C0.378743 1.35417 0 1.73291 0 2.20052C0 2.66813 0.378743 3.04688 0.846354 3.04688C0.850586 3.04688 0.856934 3.04688 0.861165 3.04688L1.82812 8.36621C1.9445 9.00944 2.50521 9.47917 3.16113 9.47917H9.02637C9.68018 9.47917 10.2409 9.01156 10.3594 8.36621L11.3263 3.04688C11.3306 3.04688 11.3369 3.04688 11.3411 3.04688C11.8088 3.04688 12.1875 2.66813 12.1875 2.20052C12.1875 1.73291 11.8088 1.35417 11.3411 1.35417C10.8735 1.35417 10.4948 1.73291 10.4948 2.20052C10.4948 2.39095 10.5583 2.56657 10.6641 2.70833L8.77881 4.21696C8.44238 4.48568 7.94303 4.37565 7.75049 3.99056L6.53809 1.56576Z\" fill=\"#5B32F4\"><\/path>\n<\/svg>",
+            "header-4f8663d5b0b160883873c4585fdbb505": null,
+            "text_4": "Stress Relief",
+            "icon_4": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"12\" height=\"12\" viewbox=\"0 0 12 12\" fill=\"none\">\n  <path d=\"M12 0.75C12 3.4125 10.0172 5.61328 7.44844 5.95312C7.28203 4.70156 6.73125 3.57187 5.91797 2.68828C6.81563 1.08516 8.53125 0 10.5 0H11.25C11.6648 0 12 0.335156 12 0.75ZM0 2.25C0 1.83516 0.335156 1.5 0.75 1.5H1.5C4.39922 1.5 6.75 3.85078 6.75 6.75V7.5V11.25C6.75 11.6648 6.41484 12 6 12C5.58516 12 5.25 11.6648 5.25 11.25V7.5C2.35078 7.5 0 5.14922 0 2.25Z\" fill=\"#5B32F4\"><\/path>\n<\/svg>"
+          }
+        },
+        "price_g3gbme": {
+          "type": "price",
+          "disabled": false,
+          "settings": {}
+        },
+        "variant_picker_QkC4ba": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "custom_liquid_pqgJX": {
+          "type": "custom_liquid",
+          "disabled": false,
+          "settings": {
+            "custom_liquid": "{% assign current_product = product | default: section.settings.product %}\n\n<div class=\"v7-unique-variant-container\" id=\"ProductUI-{{ section.id }}-{{ current_product.id }}\">\n\n  <div class=\"v7-unique-swatch-section\">\n    <label class=\"v7-unique-label\">Animals<\/label>\n    <div class=\"v7-unique-swatch-grid\">\n      {%- assign colors_seen = \"\" -%}\n      {% for variant in current_product.variants %}\n        {%- assign color_val = variant.options[0] -%}\n        {%- unless colors_seen contains color_val -%}\n          {%- assign colors_seen = colors_seen | append: color_val | append: \",\" -%}\n\n          {%- assign key = color_val | downcase -%}\n          {%- case key -%}\n            {%- when 'blue' -%}{% assign bg='#dbeafe' %}{% assign bdr='#3b82f6' %}\n            {%- when 'pink' -%}{% assign bg='#fde2e4' %}{% assign bdr='#ec4899' %}\n            {%- else -%}{% assign bg='#f8f8f8' %}{% assign bdr='#444' %}\n          {%- endcase -%}\n\n          <label class=\"v7-unique-card\">\n            <input type=\"radio\" name=\"swatch_color_v7\" value=\"{{ color_val | escape }}\" class=\"v7-unique-color-input\" data-bg=\"{{ bg }}\" \n              {% if current_product.selected_or_first_available_variant.options[0] == color_val %}checked{% endif %} hidden>\n            <div class=\"v7-unique-card-inner\" style=\"background: {{ bg }}; --v7-border: {{ bdr }};\">\n              <img src=\"{{ variant.featured_media | default: current_product.featured_media | image_url: width: 250 }}\" loading=\"lazy\">\n              <div class=\"v7-unique-info\">\n                <div class=\"v7-unique-title\">{{ color_val | upcase }}<\/div>\n                <div class=\"v7-unique-pill\" data-v7-swatch-color=\"{{ color_val | escape }}\">{{ variant.price | money }}<\/div>\n              <\/div>\n            <\/div>\n          <\/label>\n        {%- endunless -%}\n      {% endfor %}\n    <\/div>\n  <\/div>\n\n  <div class=\"v7-unique-size-section\">\n    <label class=\"v7-unique-label\">Size<\/label>\n    <div class=\"v7-unique-select-wrapper\">\n      <select class=\"v7-unique-dropdown\">\n        {%- assign variants_list = \"\" -%}\n        {% for variant in current_product.variants %}\n          {%- capture var_key -%}{{ variant.options[0] }}|{{ variant.options[1] }}{%- endcapture -%}\n          {%- unless variants_list contains var_key -%}\n            {%- assign variants_list = variants_list | append: var_key | append: \",\" -%}\n            <option \n              value=\"{{ variant.id }}\" \n              data-color=\"{{ variant.options[0] | escape }}\" \n              data-price=\"{{ variant.price | money }}\"\n              data-raw-price=\"{{ variant.price }}\"\n              data-compare=\"{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money }}{% else %}none{% endif %}\"\n              data-raw-compare=\"{{ variant.compare_at_price | default: 0 }}\"\n              {% if variant.id == current_product.selected_or_first_available_variant.id %}selected{% endif %}\n            >\n              {{ variant.options[1] | default: variant.title }} — {{ variant.price | money }}\n            <\/option>\n          {%- endunless -%}\n        {% endfor %}\n      <\/select>\n    <\/div>\n  <\/div>\n<\/div>\n\n<style>\n\/* Namespaced CSS to prevent theme conflicts *\/\n.v7-unique-variant-container { margin: 15px 0; max-width: 450px; }\n.v7-unique-label { font-weight: 800; margin-bottom: 8px; display: block; font-size: 13px; color: #333; }\n.v7-unique-swatch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; }\n.v7-unique-card-inner { border: 1px solid #eee; padding: 8px; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.2s; border: 1.5px solid transparent; }\n.v7-unique-card input:checked + .v7-unique-card-inner { border-color: var(--v7-border); transform: scale(1.02); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }\n.v7-unique-card img { width: 100%; aspect-ratio: 1.1; object-fit: cover; border-radius: 8px; }\n.v7-unique-title { font-size: 11px; font-weight: 900; margin: 5px 0 2px; text-transform: uppercase; }\n.v7-unique-pill { display: inline-block; background: #fff; padding: 2px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; border: 1px solid #f0f0f0; }\n\n.v7-unique-select-wrapper { position: relative; width: 100%; }\n.v7-unique-dropdown {\n  width: 100%; padding: 12px 15px; background: #f4f7ff; border: 1.5px solid #dce4fa; border-radius: 10px;\n  font-weight: 700; font-size: 14px; appearance: none; -webkit-appearance: none; cursor: pointer;\n}\n.v7-unique-select-wrapper::after { content: '▼'; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); font-size: 10px; pointer-events: none; }\n\n\/* Global Override: Ensures price visibility while namespacing internal layout *\/\n.v7-unique-variant-container .price-item { display: inline-block !important; visibility: visible !important; opacity: 1 !important; }\n<\/style>\n\n<script>\n(function() {\n  const container = document.querySelector('.v7-unique-variant-container');\n  if (!container) return;\n\n  const sizeSelect = container.querySelector('.v7-unique-dropdown');\n  const colorInputs = container.querySelectorAll('.v7-unique-color-input');\n\n  function updateGlobalUI(opt) {\n    if(!opt) return;\n    const priceStr = opt.dataset.price;\n    const compareStr = opt.dataset.compare;\n    const rawPrice = parseInt(opt.dataset.rawPrice);\n    const rawCompare = parseInt(opt.dataset.rawCompare);\n\n    \/\/ Update Theme Prices\n    document.querySelectorAll('.featured-product .price-item--sale, .featured-product .price-item--regular').forEach(el => {\n      el.textContent = priceStr;\n      el.style.setProperty('display', 'inline-block', 'important');\n    });\n\n    \/\/ Handle Compare Price & Discount Tag\n    const compareElements = document.querySelectorAll('.featured-product .price-item--regular[data-compare-price], .featured-product s.price-item, .featured-product .price__compare .price-item');\n    const saleBadge = document.querySelector('.featured-product .badge--sale, .featured-product .price__badge-sale, .featured-product .discount-tag');\n\n    if (compareStr !== \"none\" && rawCompare > rawPrice) {\n      compareElements.forEach(el => {\n        el.textContent = compareStr;\n        el.style.setProperty('display', 'inline-block', 'important');\n      });\n      if (saleBadge) saleBadge.style.setProperty('display', 'inline-block', 'important');\n    } else {\n      compareElements.forEach(el => el.style.setProperty('display', 'none', 'important'));\n      if (saleBadge) saleBadge.style.setProperty('display', 'none', 'important');\n    }\n\n    \/\/ Sync individual box prices\n    const selectedSizeLabel = opt.text.split(' — ')[0].trim();\n    Array.from(sizeSelect.options).forEach(o => {\n      if (o.text.split(' — ')[0].trim() === selectedSizeLabel) {\n        const pill = container.querySelector(`[data-v7-swatch-color=\"${o.dataset.color}\"]`);\n        if (pill) pill.textContent = o.dataset.price;\n      }\n    });\n  }\n\n  sizeSelect.addEventListener('change', function() {\n    const opt = this.options[this.selectedIndex];\n    updateGlobalUI(opt);\n    \n    \/\/ Sync with Master ID input\n    document.querySelectorAll('input[name=\"id\"]').forEach(i => { \n      i.value = opt.value; \n      i.dispatchEvent(new Event('change', {bubbles:true})); \n    });\n  });\n\n  colorInputs.forEach(input => {\n    input.addEventListener('change', function() {\n      const selectedColor = this.value;\n      const currentSizeLabel = sizeSelect.options[sizeSelect.selectedIndex].text.split(' — ')[0].trim();\n      \n      sizeSelect.style.backgroundColor = this.dataset.bg;\n\n      let matchFound = false;\n      let firstAvailableForColor = null;\n\n      \/\/ Filter dropdown options based on selected color\n      Array.from(sizeSelect.options).forEach(opt => {\n        if (opt.dataset.color === selectedColor) {\n          opt.disabled = false;\n          opt.style.display = 'block';\n          if (!firstAvailableForColor) firstAvailableForColor = opt;\n          \n          \/\/ If this variant matches the size we were already looking at, select it\n          if (opt.text.split(' — ')[0].trim() === currentSizeLabel) {\n            opt.selected = true;\n            matchFound = true;\n          }\n        } else {\n          opt.disabled = true;\n          opt.style.display = 'none';\n        }\n      });\n\n      \/\/ BUG FIX: If current size doesn't exist for new animal, switch to first valid variant\n      if (!matchFound && firstAvailableForColor) {\n        firstAvailableForColor.selected = true;\n      }\n      \n      sizeSelect.dispatchEvent(new Event('change'));\n    });\n  });\n\n  \/\/ Init\n  const activeInput = container.querySelector('.v7-unique-color-input:checked');\n  if (activeInput) {\n    activeInput.dispatchEvent(new Event('change'));\n  }\n})();\n<\/script>"
+          }
+        },
+        "quantity_selector_WXRMz9": {
+          "type": "quantity_selector",
+          "disabled": false,
+          "settings": {}
+        },
+        "buy_buttons_DdXF9r": {
+          "type": "buy_buttons",
+          "disabled": false,
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "selling_and_guarantee_MAyaJj": {
+          "type": "selling_and_guarantee",
+          "disabled": false,
+          "settings": {
+            "header-021c897691339ac651078a7b1de06b1d": null,
+            "bg_selling": "#fff6f5",
+            "color_selling": "#ff4851",
+            "color_text_selling": "#645d69",
+            "feature_1": "1 Week Delivery",
+            "feature_2": "Premium Quality",
+            "feature_3": "Easy to Return",
+            "heading_selling": "SELLING OUT FAST",
+            "subtext_selling": "Due to high demand, limited quantities available",
+            "progress": 90,
+            "progress_text": "90% SOLD",
+            "header-337628ea1ef1eabb65d93ee0acdce78b": null,
+            "bg_guarantee": "#f0fff4",
+            "color_guarantee": "#00b975",
+            "color_text_guarantee": "#00b975",
+            "icon_guarantee": "shopify:\/\/shop_images\/image_21_1.png",
+            "heading_guarantee": "30-Day Money-Back Guarantee",
+            "text_guarantee": "We Want You To Love Your New Plushie. If You're Not Completely Satisfied, Return It For A Full Refund. Shopping With Us Is 100% Risk-Free."
+          }
+        },
+        "share_gNnp9J": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share",
+            "paragraph-3d951d4fb25d25276430e8571786854d": null,
+            "paragraph-054bee7a6448197e87b7ba8e7e227fea": null
+          }
+        }
+      },
+      "block_order": [
+        "custom_judjme_rating_WAQQr9",
+        "text_7QexY6",
+        "judge_me_reviews_preview_badge_RUzzQg",
+        "title_4VVnLy",
+        "our_usp_KMPxkM",
+        "price_g3gbme",
+        "variant_picker_QkC4ba",
+        "custom_liquid_pqgJX",
+        "quantity_selector_WXRMz9",
+        "buy_buttons_DdXF9r",
+        "selling_and_guarantee_MAyaJj",
+        "share_gNnp9J"
+      ],
+      "name": "t:sections.featured-product.presets.name"
+    },
+    "featured_collection_nxAJrD": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    }
+  },
+  "order": [
+    "custom_liquid_Hpykgn",
+    "171637610885bbd16a",
+    "featured_collection_BxMaU",
+    "featured_collection_nxAJrD",
+    "featured_collection_B7MMiq",
+    "featured_product_i7k8m7",
+    "featured-collection",
+    "featured_collection_n9ifFK",
+    "multicolumn_TTFB8q",
+    "171612775011e2d481",
+    "multirow_aJ9e9w"
+  ]
+}

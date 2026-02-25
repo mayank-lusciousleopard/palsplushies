@@ -1,0 +1,151 @@
+<style>
+  .section-{{ section.id }}.custom-marquee {
+    display: flex;
+    align-items: center;
+    height: {{ section.settings.marquee_height }}px;
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
+    background: {{ section.settings.colorBackground }};
+    color: {{ section.settings.colorText }};
+    font-family: {{ section.settings.font_family }};
+    text-transform: {% if section.settings.capitalize_text %}uppercase{% else %}none{% endif %};
+  }
+
+  .section-{{ section.id }}.custom-marquee a {
+    color: {{ section.settings.colorText }};
+    text-decoration: none;
+  }
+
+  .section-{{ section.id }}.custom-marquee .track {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 20s linear infinite;
+  }
+
+  .section-{{ section.id }}.custom-marquee .content {
+    margin-left: 40px;
+    font-size: {{ section.settings.font_size }}px;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-20%);
+    }
+  }
+</style>
+
+<div class="section-{{ section.id }} custom-marquee" role="region">
+  {%- if section.settings.link != blank -%}
+    <a href="{{ section.settings.link }}">
+  {%- endif -%}
+
+    <div class="track">
+      {%- for i in (1..10) -%}
+        {%- for block in section.blocks -%}
+          <span class="content marquee-text">
+            {{ block.settings.new_text | escape }}
+          </span>
+        {%- endfor -%}
+      {%- endfor -%}
+
+      {%- if section.settings.link != blank -%}
+        {% render 'icon-arrow' %}
+      {%- endif -%}
+    </div>
+
+  {%- if section.settings.link != blank -%}
+    </a>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Marquee Text",
+  "settings": [
+    {
+      "type": "color",
+      "id": "colorBackground",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "colorText",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "range",
+      "id": "marquee_height",
+      "min": 24,
+      "max": 200,
+      "step": 2,
+      "default": 46,
+      "label": "Marquee height"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 8,
+      "max": 100,
+      "step": 2,
+      "default": 24,
+      "label": "Font size"
+    },
+    {
+      "type": "select",
+      "id": "font_family",
+      "label": "Font family",
+      "default": "inherit",
+      "options": [
+        { "value": "inherit", "label": "Theme Default" },
+        { "value": "Arial, Helvetica, sans-serif", "label": "Sans Serif" },
+        { "value": "Georgia, Times, serif", "label": "Serif" },
+        { "value": "monospace", "label": "Monospace" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "capitalize_text",
+      "label": "Capitalize text (Uppercase)",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 20,
+      "settings": [
+        {
+          "type": "text",
+          "id": "new_text",
+          "label": "Text",
+          "default": "Welcome to store"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee",
+      "blocks": [
+        { "type": "text" },
+        { "type": "text" },
+        { "type": "text" }
+      ]
+    }
+  ]
+}
+{% endschema %}

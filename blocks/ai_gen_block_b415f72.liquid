@@ -1,0 +1,547 @@
+{% doc %}
+  @prompt
+    can you create a section in where in left side i can use image and right there should be 4 sections to write text and below every text there should be an option to another text in that text i can add icons and text. , so the text sections that you created are good but i want one main headline section and below that headline i want 4 sections not in one order but in 2 order like 2 and 2 and every text but another text section and below that put a box section where i can use icons , can you decrease 10x space between headline and below sections , decrease Space to 20x more , ok So Decrease the size between Section main text and secondary text by 10x also the boxes should be in structure snippet in which there should be an icon with text  , icon box padding should be 4x in size , diminish the size of the icon box to three time smaller than the actual size 
+    and reduce the space between section 1 size and secondary text by 5x, the icon box is long in size decrease the size by 4px
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-image-text-section-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+  }
+
+  .ai-image-text-container-{{ ai_gen_id }} {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .ai-image-column-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .ai-image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-image-wrapper-{{ ai_gen_id }} img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .ai-text-column-{{ ai_gen_id }} {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ai-main-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 {{ block.settings.heading_spacing }}px 0;
+    font-weight: 600;
+  }
+
+  .ai-sections-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ block.settings.grid_gap }}px;
+  }
+
+  .ai-text-section-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.section_gap }}px;
+  }
+
+  .ai-section-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.text_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .ai-secondary-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.secondary_text_size }}px;
+    color: {{ block.settings.secondary_text_color }};
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .ai-icon-box-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: {{ block.settings.icon_text_gap }}px;
+    padding: {{ block.settings.icon_box_padding }}px;
+    background-color: {{ block.settings.icon_box_bg }};
+    border-radius: {{ block.settings.icon_box_radius }}px;
+    border: {{ block.settings.icon_box_border_width }}px solid {{ block.settings.icon_box_border_color }};
+  }
+
+  .ai-icon-box-{{ ai_gen_id }} svg {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    flex-shrink: 0;
+  }
+
+  .ai-icon-box-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.icon_text_size }}px;
+    color: {{ block.settings.icon_text_color }};
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-image-text-container-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .ai-sections-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<image-text-section-{{ ai_gen_id }}
+  class="ai-image-text-section-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-image-text-container-{{ ai_gen_id }}">
+    <div class="ai-image-column-{{ ai_gen_id }}">
+      <div class="ai-image-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.image %}
+          <img
+            src="{{ block.settings.image | image_url: width: 1000 }}"
+            alt="{{ block.settings.image.alt | escape }}"
+            loading="lazy"
+            width="{{ block.settings.image.width }}"
+            height="{{ block.settings.image.height }}"
+          >
+        {% else %}
+          <div class="ai-image-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="ai-text-column-{{ ai_gen_id }}">
+      {% if block.settings.main_heading != blank %}
+        <h2 class="ai-main-heading-{{ ai_gen_id }}">{{ block.settings.main_heading }}</h2>
+      {% endif %}
+
+      <div class="ai-sections-grid-{{ ai_gen_id }}">
+        {% for i in (1..4) %}
+          {% liquid
+            assign text_key = 'section_' | append: i | append: '_text'
+            assign secondary_key = 'section_' | append: i | append: '_secondary'
+            assign icon_text_key = 'section_' | append: i | append: '_icon_text'
+            assign icon_color_key = 'section_' | append: i | append: '_icon_color'
+
+            assign section_text = block.settings[text_key]
+            assign secondary_text = block.settings[secondary_key]
+            assign icon_text = block.settings[icon_text_key]
+            assign icon_color = block.settings[icon_color_key]
+          %}
+
+          <div class="ai-text-section-{{ ai_gen_id }}">
+            {% if section_text != blank %}
+              <p class="ai-section-text-{{ ai_gen_id }}">{{ section_text }}</p>
+            {% endif %}
+
+            {% if secondary_text != blank %}
+              <p class="ai-secondary-text-{{ ai_gen_id }}">{{ secondary_text }}</p>
+            {% endif %}
+
+            {% if icon_text != blank %}
+              <div class="ai-icon-box-{{ ai_gen_id }}">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="{{ icon_color }}"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span class="ai-icon-box-text-{{ ai_gen_id }}">{{ icon_text }}</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</image-text-section-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ImageTextSection{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('image-text-section-{{ ai_gen_id }}', ImageTextSection{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Image with text sections",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Main heading"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Heading text",
+      "default": "Main Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#2e2a39"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 4,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Space below heading",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap between sections",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "section_gap",
+      "min": 2,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap within section",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Section 1"
+    },
+    {
+      "type": "text",
+      "id": "section_1_text",
+      "label": "Main text",
+      "default": "Section 1 main text"
+    },
+    {
+      "type": "text",
+      "id": "section_1_secondary",
+      "label": "Secondary text",
+      "default": "Section 1 secondary text"
+    },
+    {
+      "type": "text",
+      "id": "section_1_icon_text",
+      "label": "Icon box text",
+      "default": "Feature 1"
+    },
+    {
+      "type": "color",
+      "id": "section_1_icon_color",
+      "label": "Icon color",
+      "default": "#11c26b"
+    },
+    {
+      "type": "header",
+      "content": "Section 2"
+    },
+    {
+      "type": "text",
+      "id": "section_2_text",
+      "label": "Main text",
+      "default": "Section 2 main text"
+    },
+    {
+      "type": "text",
+      "id": "section_2_secondary",
+      "label": "Secondary text",
+      "default": "Section 2 secondary text"
+    },
+    {
+      "type": "text",
+      "id": "section_2_icon_text",
+      "label": "Icon box text",
+      "default": "Feature 2"
+    },
+    {
+      "type": "color",
+      "id": "section_2_icon_color",
+      "label": "Icon color",
+      "default": "#11c26b"
+    },
+    {
+      "type": "header",
+      "content": "Section 3"
+    },
+    {
+      "type": "text",
+      "id": "section_3_text",
+      "label": "Main text",
+      "default": "Section 3 main text"
+    },
+    {
+      "type": "text",
+      "id": "section_3_secondary",
+      "label": "Secondary text",
+      "default": "Section 3 secondary text"
+    },
+    {
+      "type": "text",
+      "id": "section_3_icon_text",
+      "label": "Icon box text",
+      "default": "Feature 3"
+    },
+    {
+      "type": "color",
+      "id": "section_3_icon_color",
+      "label": "Icon color",
+      "default": "#11c26b"
+    },
+    {
+      "type": "header",
+      "content": "Section 4"
+    },
+    {
+      "type": "text",
+      "id": "section_4_text",
+      "label": "Main text",
+      "default": "Section 4 main text"
+    },
+    {
+      "type": "text",
+      "id": "section_4_secondary",
+      "label": "Secondary text",
+      "default": "Section 4 secondary text"
+    },
+    {
+      "type": "text",
+      "id": "section_4_icon_text",
+      "label": "Icon box text",
+      "default": "Feature 4"
+    },
+    {
+      "type": "color",
+      "id": "section_4_icon_color",
+      "label": "Icon color",
+      "default": "#11c26b"
+    },
+    {
+      "type": "header",
+      "content": "Text style"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Main text size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Main text color",
+      "default": "#2e2a39"
+    },
+    {
+      "type": "range",
+      "id": "secondary_text_size",
+      "min": 10,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Secondary text size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "secondary_text_color",
+      "label": "Secondary text color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Icon box style"
+    },
+    {
+      "type": "range",
+      "id": "icon_box_padding",
+      "min": 2,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "icon_text_gap",
+      "min": 2,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap between icon and text",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "icon_text_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "icon_text_color",
+      "label": "Text color",
+      "default": "#2e2a39"
+    },
+    {
+      "type": "color",
+      "id": "icon_box_bg",
+      "label": "Background color",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "range",
+      "id": "icon_box_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "icon_box_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "icon_box_border_color",
+      "label": "Border color",
+      "default": "#e0e0e0"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text sections"
+    }
+  ]
+}
+{% endschema %}

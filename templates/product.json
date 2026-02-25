@@ -1,0 +1,1149 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "custom_liquid_DCFqgF": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"trust-pill\">\n  Trusted By&nbsp;<strong>7,500+<\/strong> &nbsp;Customers\n<\/div>\n\n<style>\n.trust-pill {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #EC5757;\n  color: #ffffff;\n  font-size: 14px;\n  font-weight: 500;\n  padding: 8px 8px;\n  border-radius: 999px;\n  line-height: 1;\n  white-space: nowrap;\n}\n<\/style>"
+          }
+        },
+        "judge_me_reviews_preview_badge_4KmDNy": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "custom_liquid_CAtWHW": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<style>\n  .trust-pill {\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    background-color: #EC5757;\n    color: #ffffff;\n    padding: 12px 14px;\n    border-radius: 999px;\n    font-size: 13px;\n    font-weight: 600;\n    line-height: 1;\n    white-space: nowrap;\n\n    \/* FINAL spacing control *\/\n    margin-top: -2px;\n    margin-bottom: 4px;\n  }\n\n  @media (max-width: 768px) {\n    .trust-pill {\n      font-size: 12px;\n      padding: 8px 8px;\n      margin-top: -3px;\n      margin-bottom: 3px;\n    }\n  }\n<\/style>\n\n<div class=\"trust-pill\">\n  Trusted by <strong>&nbsp;7,500+&nbsp;<\/strong> customers\n<\/div>"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "custom_liquid_GYqUc9": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n  .product-benefits {\n    list-style: none;\n    padding-left: 0;\n    margin: 0;\n  }\n\n  .product-benefits li {\n    margin-bottom: 10px;\n    font-size: 15px;\n    line-height: 1.35;\n  }\n\n  \/* MOBILE FIX *\/\n  @media (max-width: 768px) {\n    .product-benefits li {\n      font-size: 13px;\n      line-height: 1.25;\n      margin-bottom: 8px;\n    }\n  }\n<\/style>\n\n<ul class=\"product-benefits\">\n  <li>🧸 Ultra-soft plush for cozy snuggles<\/li>\n  <li>🎒 Designed for everyday comfort and joy<\/li>\n  <li>🤗 Squishy feel to boost relaxation<\/li>\n  <li>🌈 Adorable design sparking joyful smiles<\/li>\n<\/ul>"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "google_youtube_automated_discounts_price_QecmgT": {
+          "type": "shopify:\/\/apps\/google-youtube\/blocks\/automated_discounts_price\/14ec7bd0-ac77-49a9-9417-90752398bdff",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "custom_liquid_RrkBwb": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"custom-variant-ui-v3\" id=\"ProductSelect-{{ section.id }}\">\n  <div class=\"variant-swatch-grid\">\n    {% for variant in product.variants %}\n      {% assign v_image = variant.featured_media | default: product.featured_media %}\n      \n      {% comment %} \n        CLEAN TITLE: This removes the '\/' and splits the options. \n        It assumes Option 1 is Name\/Animal and Option 2 is Size.\n      {% endcomment %}\n      {% assign name_part = variant.options[0] %}\n      {% assign size_part = variant.options[1] %}\n\n      <label class=\"variant-card\">\n        <input\n          type=\"radio\"\n          name=\"manual_swatch\"\n          value=\"{{ variant.id }}\"\n          data-price=\"{{ variant.price | money }}\"\n          data-image=\"{{ v_image | image_url: width: 800 }}\"\n          {% if variant.id == product.selected_or_first_available_variant.id %}checked{% endif %}\n          class=\"manual-variant-input\"\n          hidden\n        >\n        <div class=\"variant-card-inner\">\n          <img src=\"{{ v_image | image_url: width: 200 }}\" alt=\"{{ variant.title }}\" loading=\"lazy\">\n          <div class=\"variant-info\">\n            <div class=\"main-title-bold\">{{ name_part | upcase }}<\/div>\n            {% if size_part %}\n              <div class=\"size-shadow-text\">{{ size_part }}<\/div>\n            {% endif %}\n          <\/div>\n        <\/div>\n      <\/label>\n    {% endfor %}\n  <\/div>\n<\/div>\n\n<style>\n.custom-variant-ui-v3 { margin: 20px 0; }\n.variant-swatch-grid {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 10px;\n}\n.variant-card { cursor: pointer; display: block; }\n\n.variant-card-inner {\n  border: 1px solid #e5e5e5;\n  padding: 8px;\n  background: #fff;\n  border-radius: 8px;\n  transition: all 0.2s ease;\n  text-align: center;\n}\n\n\/* Selected state *\/\n.variant-card input:checked + .variant-card-inner {\n  border: 2px solid #000;\n  background: #fdfdfd;\n}\n\n.variant-card img {\n  width: 100%;\n  aspect-ratio: 1\/1;\n  object-fit: cover;\n  display: block;\n  border-radius: 4px;\n}\n\n.variant-info {\n  margin-top: 8px;\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n\n\/* Main Name in BOLD *\/\n.main-title-bold {\n  font-size: 12px;\n  font-weight: 800; \/* Extra bold *\/\n  color: #1a1a1a;\n  line-height: 1.2;\n}\n\n\/* Size in LIGHT SHADOW\/Subtle look *\/\n.size-shadow-text {\n  font-size: 11px;\n  font-weight: 400;\n  color: #666;\n  text-shadow: 1px 1px 2px rgba(0,0,0,0.05); \/* Very light subtle shadow *\/\n  opacity: 0.9;\n}\n<\/style>\n\n<script>\n(function() {\n  const container = document.querySelector('#ProductSelect-{{ section.id }}');\n  if (!container) return;\n\n  const inputs = container.querySelectorAll('.manual-variant-input');\n\n  inputs.forEach(input => {\n    input.addEventListener('change', function() {\n      const selectedId = this.value;\n      const selectedPrice = this.dataset.price;\n      const selectedImage = this.dataset.image;\n\n      \/\/ 1. UPDATE ALL CART FORMS\n      const productForms = document.querySelectorAll('form[action*=\"\/cart\/add\"]');\n      productForms.forEach(form => {\n        let masterIdInput = form.querySelector('input[name=\"id\"]');\n        if (!masterIdInput) {\n           masterIdInput = document.querySelector(`input[name=\"id\"][form=\"${form.id}\"]`);\n        }\n        if (masterIdInput) {\n          masterIdInput.value = selectedId;\n          masterIdInput.dispatchEvent(new Event('change', { bubbles: true }));\n        }\n      });\n\n      \/\/ 2. UPDATE PRICE\n      const priceSelectors = ['.price-item--regular', '.price__regular .price-item', '.product__info-container .price'];\n      priceSelectors.forEach(selector => {\n        const el = document.querySelector(selector);\n        if (el) el.textContent = selectedPrice;\n      });\n\n      \/\/ 3. UPDATE IMAGE\n      const mainImage = document.querySelector('.product__media img, .product__main-media img');\n      if (mainImage && selectedImage) {\n        mainImage.src = selectedImage;\n        mainImage.srcset = selectedImage;\n      }\n\n      \/\/ 4. SYNC URL\n      const url = new URL(window.location.href);\n      url.searchParams.set('variant', selectedId);\n      window.history.replaceState({}, '', url);\n    });\n  });\n})();\n<\/script>"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "custom_liquid_ADbiNH": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n  .selling-fast-container {\n    border: 1.5px solid #EC5757;\n    border-radius: 16px;\n    padding: 18px 20px;\n    background: #FFF5F5;\n  }\n\n  .selling-fast-top {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    font-size: 13px;\n    color: #EC5757;\n    font-weight: 500;\n  }\n\n  .selling-fast-top span {\n    display: flex;\n    align-items: center;\n    gap: 6px;\n  }\n\n  .selling-fast-line {\n    height: 1px;\n    background: #EC5757;\n    margin: 14px 0 18px;\n  }\n\n  .selling-fast-title {\n    text-align: center;\n    font-weight: 700;\n    letter-spacing: 1px;\n    color: #EC5757;\n    margin-bottom: 6px;\n  }\n\n  .selling-fast-subtitle {\n    text-align: center;\n    font-size: 14px;\n    margin-bottom: 16px;\n  }\n\n  .progress-wrapper {\n    background: #ffffff;\n    border-radius: 999px;\n    height: 28px;\n    border: 1px solid #EC5757;\n    overflow: hidden;\n  }\n\n  .progress-fill {\n    width: 90%;\n    height: 100%;\n    background: #EC5757;\n    color: #ffffff;\n    font-weight: 700;\n    font-size: 14px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    border-radius: 999px 0 0 999px;\n  }\n<\/style>\n\n<div class=\"selling-fast-container\">\n\n  <div class=\"selling-fast-top\">\n    <span>✓ 1 Week Delivery<\/span>\n    <span>✓ Premium Quality<\/span>\n    <span>✓ Easy to Return<\/span>\n  <\/div>\n\n  <div class=\"selling-fast-line\"><\/div>\n\n  <div class=\"selling-fast-title\">SELLING OUT FAST<\/div>\n  <div class=\"selling-fast-subtitle\">\n    Due to high demand, limited quantities available\n  <\/div>\n\n  <div class=\"progress-wrapper\">\n    <div class=\"progress-fill\">\n      90% SOLD\n    <\/div>\n  <\/div>\n\n<\/div>"
+          }
+        },
+        "custom_liquid_XPUDR4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n  .guarantee-box {\n    display: flex;\n    gap: 16px;\n    align-items: center;\n    background: #FFF3F3;\n    border-radius: 10px;\n    padding: 14px 16px;\n  }\n\n  .guarantee-text h3 {\n    margin: 0 0 4px 0;\n    font-size: 16px;\n    font-weight: 700;\n    color: #2b2b2b;\n  }\n\n  .guarantee-text p {\n    margin: 0;\n    font-size: 13.5px;\n    line-height: 1.4;\n    color: #2b2b2b;\n  }\n\n  .guarantee-badge {\n    width: 64px;\n    height: 64px;\n    flex-shrink: 0;\n  }\n<\/style>\n\n<div class=\"guarantee-box\">\n\n  <!-- PERFECT SVG STAMP -->\n  <svg class=\"guarantee-badge\" viewBox=\"0 0 120 120\">\n    <defs>\n      <path\n        id=\"circlePath\"\n        d=\"M 60,60\n           m -46,0\n           a 46,46 0 1,1 92,0\n           a 46,46 0 1,1 -92,0\" \/>\n    <\/defs>\n\n    <!-- Outer Ring -->\n    <circle cx=\"60\" cy=\"60\" r=\"52\" fill=\"none\" stroke=\"#EC5757\" stroke-width=\"4\"\/>\n\n    <!-- Circular Text -->\n    <text fill=\"#EC5757\" font-size=\"9\" font-weight=\"600\" letter-spacing=\"1\">\n      <textPath href=\"#circlePath\">\n        MONEY BACK GUARANTEE • MONEY BACK GUARANTEE •\n      <\/textPath>\n    <\/text>\n\n    <!-- Center Text -->\n    <text x=\"60\" y=\"58\" text-anchor=\"middle\" fill=\"#EC5757\" font-size=\"26\" font-weight=\"800\">\n      30\n    <\/text>\n    <text x=\"60\" y=\"78\" text-anchor=\"middle\" fill=\"#EC5757\" font-size=\"12\" font-weight=\"700\">\n      DAY\n    <\/text>\n  <\/svg>\n\n  <!-- TEXT CONTENT -->\n  <div class=\"guarantee-text\">\n    <h3>30-day money-back guarantee<\/h3>\n    <p>\n      We want you to love your new plushie. If you're not completely satisfied,\n      return it for a full refund. Shopping with us is 100% risk-free.\n    <\/p>\n  <\/div>\n\n<\/div>"
+          }
+        },
+        "text_HH6Tda": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<strong>Low stock<\/strong>: order within 2 hours to secure yours today. Stock is limited",
+            "text_style": "uppercase"
+          }
+        },
+        "collapsible_tab_cjDDPP": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping times",
+            "icon": "none",
+            "content": "<p>Order before<strong> 11PM – <\/strong>Ships tomorrow<br\/>Estimated delivery: 7–12 business days.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_WmVjBf": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Return Policy",
+            "icon": "none",
+            "content": "<p>If your plush have damage the first thing to do is contact us, so we can start a return and refund process.<\/p><p>You have 30 days after receiving your order to do it.<\/p><p>Any question our email is always a click away.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_TtPQrL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials Quality",
+            "icon": "none",
+            "content": "<p>Each plush toy is made with high-quality, hypoallergenic materials that are soft, durable, and safe for all ages.<\/p><p>No use of animal skin or toxic components. <\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_TfLFEk": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How to keep it clean",
+            "icon": "none",
+            "content": "<p>We recommend spot cleaning with a damp cloth for minor stains. For a deeper clean, hand wash gently with mild soap and let it air dry completely.<\/p><p>You can always use the washing machine on a gentle cycle and a mild detergent.<\/p><p> Avoid Fabric Softener and Bleach.<\/p>",
+            "page": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "judge_me_reviews_review_widget_TwyhpJ": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_DCFqgF",
+        "judge_me_reviews_preview_badge_4KmDNy",
+        "custom_liquid_CAtWHW",
+        "title",
+        "custom_liquid_GYqUc9",
+        "price",
+        "google_youtube_automated_discounts_price_QecmgT",
+        "variant_picker",
+        "custom_liquid_RrkBwb",
+        "quantity_selector",
+        "buy_buttons",
+        "custom_liquid_ADbiNH",
+        "custom_liquid_XPUDR4",
+        "text_HH6Tda",
+        "collapsible_tab_cjDDPP",
+        "collapsible_tab_WmVjBf",
+        "collapsible_tab_TtPQrL",
+        "collapsible_tab_TfLFEk",
+        "description",
+        "share",
+        "judge_me_reviews_review_widget_TwyhpJ"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 24
+      }
+    },
+    "custom_scrolling_content_6CDKJb": {
+      "type": "custom-scrolling-content",
+      "blocks": {
+        "text_pR3TcK": {
+          "type": "text",
+          "settings": {
+            "new_text": "Loved by 7000+ Families"
+          }
+        },
+        "text_7UAjBe": {
+          "type": "text",
+          "settings": {
+            "new_text": "30-day comfort guarantee"
+          }
+        },
+        "text_dbDrba": {
+          "type": "text",
+          "settings": {
+            "new_text": "7,500+ Customers Can't Be Wrong"
+          }
+        },
+        "text_XJ9kmX": {
+          "type": "text",
+          "settings": {
+            "new_text": "Ships in 7-10 Days – Order Today"
+          }
+        }
+      },
+      "block_order": [
+        "text_pR3TcK",
+        "text_7UAjBe",
+        "text_dbDrba",
+        "text_XJ9kmX"
+      ],
+      "name": "Marquee",
+      "settings": {
+        "colorBackground": "#ec5757",
+        "colorText": "#ffffff",
+        "link": "",
+        "marquee_height": 50,
+        "font_size": 20,
+        "font_family": "monospace",
+        "capitalize_text": true
+      }
+    },
+    "ss_product_addons_3_xxEWmU": {
+      "type": "ss-product-addons-3",
+      "blocks": {
+        "heading_DzKkbP": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Forever Valentine's gift<\/p>",
+            "heading_custom": false,
+            "heading_font": "josefin_sans_n4",
+            "heading_size": 18,
+            "heading_size_mobile": 18,
+            "heading_height": 150,
+            "heading_align": "left",
+            "heading_align_mobile": "left",
+            "heading_color": "#121212"
+          }
+        }
+      },
+      "block_order": [
+        "heading_DzKkbP"
+      ],
+      "disabled": true,
+      "name": "SS - Product addons #3",
+      "settings": {
+        "section_position": "below_buy",
+        "products": [
+          "heart-bunny-plush",
+          "strawberry-cinna-plush",
+          "love-bunny-plush",
+          "demogorgon-love-bear"
+        ],
+        "hide_sold_out_product": false,
+        "cards_gap": 8,
+        "cards_gap_mobile": 8,
+        "cards_per_row": 4,
+        "cards_per_row_mobile": 4,
+        "cards_mt": 14,
+        "cards_mt_mobile": 12,
+        "card_padding_horizontal": 4,
+        "card_padding_horizontal_mobile": 4,
+        "card_padding_vertical": 16,
+        "card_padding_vertical_mobile": 16,
+        "card_radius": 16,
+        "card_border_thickness": 1,
+        "card_align": "center",
+        "card_align_mobile": "center",
+        "image_radius": 0,
+        "image_border_thickness": 0,
+        "image_ratio": "square",
+        "image_ratio_mobile": "square",
+        "product_title_custom": false,
+        "product_title_font": "josefin_sans_n4",
+        "product_title_size": 13,
+        "product_title_size_mobile": 12,
+        "product_title_height": 150,
+        "product_title_mt": 10,
+        "product_title_mt_mobile": 10,
+        "product_price_custom": false,
+        "product_price_font": "josefin_sans_n4",
+        "product_price_size": 12,
+        "product_price_size_mobile": 12,
+        "product_price_height": 130,
+        "product_price_mt": 16,
+        "product_price_mt_mobile": 16,
+        "product_price_compare": true,
+        "card_bg_color": "#ffffff",
+        "card_border_color": "#cccccc",
+        "card_border_active_color": "#121212",
+        "image_border_color": "#121212",
+        "product_title_color": "#121212",
+        "product_price_color": "#121212",
+        "product_price_original_color": "#afafaf",
+        "background_color": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "border_color": "#121212",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true,
+        "form_class": ""
+      }
+    },
+    "only_img_djdMFg": {
+      "type": "only_img",
+      "disabled": true,
+      "name": "only_img_section",
+      "settings": {
+        "custom_img": "shopify:\/\/shop_images\/WhatsApp_Image_2026-02-06_at_5.29.02_PM__1___1_-removebg-preview.png"
+      }
+    },
+    "image_with_text_VETp7q": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_dM9gAp": {
+          "type": "heading",
+          "settings": {
+            "heading": "Don't fall for knock offs",
+            "heading_size": "h2"
+          }
+        },
+        "text_RGxxwQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>There's a reason why knock offs are cheap. Their plushies have poorly stitched faces, uses cheap fabric and are under stuffed. Don't disappoint your loved ones with a fake.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_TfdgtC": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_dM9gAp",
+        "text_RGxxwQ",
+        "button_TfdgtC"
+      ],
+      "custom_css": [
+        "@media (max-width: 600px) {.image-with-text__content {padding-left: 0px; padding-right: 0px; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/WhatsApp_Image_2026-02-06_at_5.26.49_PM.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "17703707440e1cac43": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_cards_carousel_pYUThN": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/cards_carousel\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_cards_carousel_pYUThN"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "multicolumn_Q6tETU": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_QjwYT4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/col-1.webp",
+            "title": "",
+            "text": "<p>Stuffed generously with <strong>100% premium PP cotton<\/strong>  for maximum squishiness and comfort.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ahB8xq": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/col-2.jpg",
+            "title": "",
+            "text": "<p>Made with a <strong>super-soft outer fabric<\/strong>, designed to be hugged all night long.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_aiKrfy": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/col-3.webp",
+            "title": "",
+            "text": "<p><strong>Thousands of plushies<\/strong>, from cats to bunnies to capybaras, so everyone can find their perfect plushie.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_QHXUix": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/col-4.jpg",
+            "title": "",
+            "text": "<p>Expert craftmanship and reinforced seams make our plushies<strong> more durable<\/strong> and <strong>built to last.<\/strong><\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_QjwYT4",
+        "column_ahB8xq",
+        "column_aiKrfy",
+        "column_QHXUix"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Why Our Plushies Feel So Good",
+        "hide_corners": true,
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "177141766702bf3dca": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_dw9Q87": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_dw9Q87"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "image_with_per_icon_9i7TUe": {
+      "type": "image-with-per-icon",
+      "blocks": {
+        "image_MxVYnq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/S98cacc20b99d48b297099e90f3c804dfW.webp",
+            "image_link": "",
+            "image_ratio": "adapt"
+          }
+        },
+        "content_QB7HCB": {
+          "type": "content",
+          "settings": {
+            "heading": "Feel the Dragon Love",
+            "percent_1": "92",
+            "text_1": "snuggle time increased",
+            "percent_2": "88",
+            "text_2": "playtime creativity boosted",
+            "percent_3": "95",
+            "text_3": "smiles and giggles unleashed",
+            "subtext": "Statistics are based on customer surveys. Individual results may vary."
+          }
+        }
+      },
+      "block_order": [
+        "image_MxVYnq",
+        "content_QB7HCB"
+      ],
+      "disabled": true,
+      "name": "image with text number",
+      "settings": {
+        "color_scheme": "",
+        "heading_color": "#111111",
+        "text_alignment_desktop": "left",
+        "text_alignment_mobile": "left",
+        "heading_font": "assistant_n4",
+        "heading_size_desktop": 30,
+        "heading_size_mobile": 24,
+        "heading_alignment_desktop": "left",
+        "heading_alignment_mobile": "left",
+        "heading_weight": "600",
+        "heading_bold": false,
+        "percent_font": "assistant_n7",
+        "text_font": "assistant_n4",
+        "text_size_desktop": 20,
+        "text_size_mobile": 16,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ai_gen_block_daa1719_WhAEqj": {
+      "type": "ai_gen_block_daa1719",
+      "blocks": {
+        "item_XQLkXE": {
+          "type": "item",
+          "settings": {
+            "title": "Premium Quality",
+            "text": "Made with the finest materials for ultimate comfort",
+            "svg_icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"><\/path><\/svg>",
+            "badge_text": "Top rated by customers",
+            "card_bg_override": ""
+          }
+        },
+        "item_pQK6TX": {
+          "type": "item",
+          "settings": {
+            "title": "Eco-Friendly",
+            "text": "Sustainably sourced and environmentally conscious",
+            "svg_icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z\"><\/path><\/svg>",
+            "badge_text": "100% sustainable materials",
+            "card_bg_override": ""
+          }
+        },
+        "item_mDrT3c": {
+          "type": "item",
+          "settings": {
+            "title": "Handcrafted",
+            "text": "Each piece carefully crafted by skilled artisans",
+            "svg_icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"><\/path><\/svg>",
+            "badge_text": "Made by expert craftspeople",
+            "card_bg_override": ""
+          }
+        },
+        "item_GXU8F7": {
+          "type": "item",
+          "settings": {
+            "title": "Guaranteed",
+            "text": "We stand behind our products with full warranty",
+            "svg_icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z\"><\/path><\/svg>",
+            "badge_text": "Lifetime warranty included",
+            "card_bg_override": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_XQLkXE",
+        "item_pQK6TX",
+        "item_mDrT3c",
+        "item_GXU8F7"
+      ],
+      "disabled": true,
+      "name": "Why Choose Products",
+      "settings": {
+        "heading": "Why Parents Choose Us",
+        "heading_alignment": "left",
+        "heading_size_desktop": 36,
+        "heading_size_mobile": 28,
+        "image": "shopify:\/\/shop_images\/1706215124__1000002211__original.jpg",
+        "image_position": "left",
+        "hide_image_mobile": false,
+        "image_radius": 0,
+        "section_bg": "#ffffff",
+        "heading_color": "#111111",
+        "card_bg": "#ffffff",
+        "card_border": "#e5e5e5",
+        "card_title_color": "#111111",
+        "card_text_color": "#666666",
+        "badge_bg": "#b2edf2",
+        "badge_text": "#000000",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ss_testimonial_28_gGJMnP": {
+      "type": "ss-testimonial-28",
+      "blocks": {
+        "review_7kV3wX": {
+          "type": "review",
+          "settings": {
+            "first_image": "shopify:\/\/shop_images\/1689208311__inbound3283696489620134945__original.jpg",
+            "second_image": "shopify:\/\/shop_images\/1702328225__screenshot_20231211_135510_instagram__original.jpg",
+            "third_image": "shopify:\/\/shop_images\/1711822105__img_20240301_120043__original.jpg",
+            "fourth_image": "shopify:\/\/shop_images\/1689380452__img_5747__original.jpg",
+            "image_size": 38,
+            "image_size_mobile": 38,
+            "image_radius": 100,
+            "image_border_thickness": 2,
+            "stars_count": 5,
+            "stars_size": 18,
+            "stars_size_mobile": 16,
+            "review": "7.5K+ Happy Customers",
+            "stars_text": "Excellent 4.9",
+            "review_custom": false,
+            "review_font": "josefin_sans_n4",
+            "review_size": 16,
+            "review_size_mobile": 13,
+            "review_advanced": false,
+            "review_height": 130,
+            "review_mt": 16,
+            "review_mt_mobile": 10,
+            "review_color": "#121212",
+            "count_color": "#121212",
+            "stars_color": "#ffffff",
+            "stars_bg_color": "#00b67a",
+            "stars_bg_half_color": "#dddddd",
+            "image_border_color": "#ffffff"
+          }
+        },
+        "heading_gMttYP": {
+          "type": "heading",
+          "settings": {
+            "heading": "<h2>What Our Customers Says<\/h2>",
+            "heading_custom": false,
+            "heading_font": "josefin_sans_n4",
+            "heading_size": 32,
+            "heading_size_mobile": 32,
+            "heading_advanced": false,
+            "heading_height": 130,
+            "heading_mt": 12,
+            "heading_mt_mobile": 16,
+            "heading_max_width": 80,
+            "heading_color": "#121212",
+            "heading_border_color": "#121212"
+          }
+        },
+        "slide_4bekPt": {
+          "type": "slide",
+          "settings": {
+            "media_type": "video",
+            "video_url": "",
+            "text": "<p>My kids absolutely love this plushie! Super soft and cuddly<\/p>",
+            "stars_count": 5,
+            "badge": "Verified",
+            "author": "James Holloway"
+          }
+        },
+        "slide_apMMPL": {
+          "type": "slide",
+          "settings": {
+            "media_type": "video",
+            "video_url": "",
+            "text": "<p>Excellent quality and exactly as pictured. Highly recommend!<\/p>",
+            "stars_count": 5,
+            "badge": "Verified",
+            "author": "Emily Carter"
+          }
+        },
+        "slide_W7tpcz": {
+          "type": "slide",
+          "settings": {
+            "media_type": "video",
+            "video_url": "",
+            "text": "<p>Fast shipping and adorable design—my daughter can’t put it down.<\/p>",
+            "stars_count": 5,
+            "badge": "Verified",
+            "author": "Thomas Reed"
+          }
+        },
+        "slide_yHeCUk": {
+          "type": "slide",
+          "settings": {
+            "media_type": "video",
+            "video_url": "",
+            "text": "<p>Very well-made and durable. Perfect gift for any age.<\/p>",
+            "stars_count": 5,
+            "badge": "Verified",
+            "author": "Olivia Bennett"
+          }
+        },
+        "slide_fLeMd4": {
+          "type": "slide",
+          "settings": {
+            "media_type": "video",
+            "video_url": "",
+            "text": "<p>I was impressed by the detail and softness. Worth every penny.<\/p>",
+            "stars_count": 5,
+            "badge": "Verified",
+            "author": "Daniel Whitmore"
+          }
+        },
+        "slide_M6QpzC": {
+          "type": "slide",
+          "settings": {
+            "media_type": "video",
+            "video_url": "",
+            "text": "<p>Cute, huggable, and safe for toddlers. Totally satisfied<\/p>",
+            "stars_count": 5,
+            "badge": "Verified",
+            "author": "Michael Harrington"
+          }
+        },
+        "slide_qifnhd": {
+          "type": "slide",
+          "settings": {
+            "media_type": "video",
+            "video_url": "",
+            "text": "<p>Arrived quickly and my son loves it. Will buy again!<\/p>",
+            "stars_count": 5,
+            "badge": "Verified",
+            "author": "Lucy Fairchild"
+          }
+        },
+        "button_xke9tm": {
+          "type": "button",
+          "settings": {
+            "button": "Shop now",
+            "url": "",
+            "open_in_new_tab": false,
+            "button_style": "outline",
+            "button_custom": false,
+            "button_font": "josefin_sans_n4",
+            "button_size": 14,
+            "button_size_mobile": 14,
+            "button_advanced": false,
+            "button_height": 100,
+            "button_padding_horizontal": 32,
+            "button_padding_horizontal_mobile": 32,
+            "button_padding_vertical": 16,
+            "button_padding_vertical_mobile": 16,
+            "button_radius": 100,
+            "button_border_thickness": 1,
+            "button_mt": 24,
+            "button_mt_mobile": 16,
+            "button_color": "#121212",
+            "button_hover_color": "#ffffff",
+            "button_bg_color": "#ffffff",
+            "button_bg_hover_color": "#121212",
+            "button_border_color": "#121212",
+            "button_border_hover_color": "#121212"
+          }
+        },
+        "bottom_text_7znPAy": {
+          "type": "bottom_text",
+          "settings": {
+            "bottom_text": "<p><strong>Caption<\/strong><\/p>",
+            "text_custom": false,
+            "text_font": "josefin_sans_n4",
+            "text_size": 15,
+            "text_size_mobile": 13,
+            "text_advanced": false,
+            "text_height": 130,
+            "text_mt": 16,
+            "text_mt_mobile": 12,
+            "text_radius": 8,
+            "text_border_thickness": 0,
+            "text_padding_horizontal": 20,
+            "text_padding_horizontal_mobile": 20,
+            "text_padding_vertical": 10,
+            "text_padding_vertical_mobile": 10,
+            "text_color": "#121212",
+            "text_bg_color": "#f0f0f0",
+            "text_border_color": "#121212"
+          }
+        }
+      },
+      "block_order": [
+        "review_7kV3wX",
+        "heading_gMttYP",
+        "slide_4bekPt",
+        "slide_apMMPL",
+        "slide_W7tpcz",
+        "slide_yHeCUk",
+        "slide_fLeMd4",
+        "slide_M6QpzC",
+        "slide_qifnhd",
+        "button_xke9tm",
+        "bottom_text_7znPAy"
+      ],
+      "disabled": true,
+      "name": "SS - Testimonials #28",
+      "settings": {
+        "content_align": "center",
+        "content_align_mobile": "center",
+        "slider_view": 4,
+        "slider_view_mobile": 1.3,
+        "slider_advanced": false,
+        "slider_gap": 20,
+        "slider_gap_mobile": 16,
+        "slider_mt": 40,
+        "slider_mt_mobile": 28,
+        "slide_radius": 16,
+        "slide_border_thickness": 1,
+        "media_ratio": "square",
+        "media_ratio_mobile": "square",
+        "play_size": 20,
+        "play_size_mobile": 24,
+        "play_radius": 100,
+        "slide_content_advanced": false,
+        "slide_content_padding_horizontal": 20,
+        "slide_content_padding_horizontal_mobile": 20,
+        "slide_content_padding_vertical": 20,
+        "slide_content_padding_vertical_mobile": 20,
+        "slide_content_align": "left",
+        "slide_content_align_mobile": "left",
+        "text_custom": false,
+        "text_font": "josefin_sans_n4",
+        "text_size": 15,
+        "text_size_mobile": 14,
+        "text_height": 150,
+        "stars_size": 18,
+        "stars_size_mobile": 16,
+        "stars_advanced": false,
+        "stars_wrapper_mt": 20,
+        "stars_wrapper_mt_mobile": 20,
+        "badge_custom": false,
+        "badge_font": "josefin_sans_n4",
+        "badge_size": 12,
+        "badge_size_mobile": 11,
+        "badge_advanced": false,
+        "badge_height": 100,
+        "badge_padding_horizontal": 6,
+        "badge_padding_horizontal_mobile": 6,
+        "badge_padding_vertical": 4,
+        "badge_padding_vertical_mobile": 4,
+        "badge_radius": 2,
+        "author_custom": false,
+        "author_font": "josefin_sans_n4",
+        "author_size": 14,
+        "author_size_mobile": 13,
+        "author_advanced": false,
+        "author_height": 130,
+        "author_mt": 16,
+        "author_mt_mobile": 12,
+        "arrows_advanced": false,
+        "arrows_gap": 20,
+        "arrows_gap_mobile": 16,
+        "arrows_mt": 32,
+        "arrows_mt_mobile": 24,
+        "arrow_show_desktop": true,
+        "arrow_show_mobile": true,
+        "arrow_size": 32,
+        "arrow_size_mobile": 32,
+        "arrow_icon_size": 7,
+        "arrow_icon_size_mobile": 7,
+        "arrow_border_thickness": 0,
+        "arrow_radius": 100,
+        "arrow_hover_effect": "color",
+        "text_color": "#121212",
+        "author_color": "#121212",
+        "stars_color": "#ffffff",
+        "stars_bg_color": "#00b67a",
+        "stars_bg_half_color": "#dddddd",
+        "slide_bg_color": "#ffffff",
+        "slide_border_color": "#f0f0f0",
+        "badge_color": "#121212",
+        "badge_bg_color": "#f0f0f0",
+        "play_color": "#ffffff",
+        "play_hover_color": "#121212",
+        "play_bg_color": "#121212",
+        "play_bg_hover_color": "#ffffff",
+        "arrow_color": "#7b7b7b",
+        "arrow_hover_color": "#7b7b7b",
+        "arrow_bg_color": "#ebebeb",
+        "arrow_bg_hover_color": "#f5f5f5",
+        "arrow_border_color": "#c7c7c7",
+        "arrow_border_hover_color": "#c7c7c7",
+        "background_style": "solid",
+        "background_color": "#ffffff",
+        "background_gradient": "linear-gradient(180deg, #FFFFFF 0%, #F2F2F2 100%)",
+        "border_color": "#121212",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "width": "page",
+        "content_width": 1200,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Maybe your pal needs a sibling!",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 68
+      }
+    },
+    "collapsible_content_fETagg": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_KVBdd8": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What ages are these plushies suitable for?",
+            "icon": "none",
+            "row_content": "<p>These plushies are suitable for <strong>Kids and Adult both <\/strong>.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_T8waVB": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do i clean my Dragon plushie ?",
+            "icon": "none",
+            "row_content": "<p>We recommend spot cleaning with a damp cloth for minor stains. For a deeper clean, hand wash gently with mild soap and let it air dry completely.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_GEHe8V": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do the plushies have wings?",
+            "icon": "none",
+            "row_content": "<p>Yes, these plushies come with <strong>soft, cuddly wings<\/strong>.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_xNfJC9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What sizes are available?",
+            "icon": "none",
+            "row_content": "<p>Available in <strong>small, medium, and large<\/strong> sizes.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_pAmpfX": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is your return policy ?",
+            "icon": "none",
+            "row_content": "<p>You have 30 days after receiving your order to do it.<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_KVBdd8",
+        "collapsible_row_T8waVB",
+        "collapsible_row_GEHe8V",
+        "collapsible_row_xNfJC9",
+        "collapsible_row_pAmpfX"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "<strong>Frequently Asked Questions<\/strong>",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image": "shopify:\/\/shop_images\/Sf8ba239033eb4155870c8f62279b1b05T.webp",
+        "image_ratio": "small",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "17706268349696461b": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "image_banner_xRaQTH": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_XUb6Bd": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_jmRrqU": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "buttons_yCdeeB": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_XUb6Bd",
+        "text_jmRrqU",
+        "buttons_yCdeeB"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "image_banner_CRTakW": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_TrimWJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_rBANWA": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "buttons_BFMJBk": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_TrimWJ",
+        "text_rBANWA",
+        "buttons_BFMJBk"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Screenshot_2026-02-10_140930.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_scrolling_content_6CDKJb",
+    "ss_product_addons_3_xxEWmU",
+    "only_img_djdMFg",
+    "image_with_text_VETp7q",
+    "17703707440e1cac43",
+    "multicolumn_Q6tETU",
+    "177141766702bf3dca",
+    "image_with_per_icon_9i7TUe",
+    "ai_gen_block_daa1719_WhAEqj",
+    "ss_testimonial_28_gGJMnP",
+    "related-products",
+    "collapsible_content_fETagg",
+    "17706268349696461b",
+    "image_banner_xRaQTH",
+    "image_banner_CRTakW"
+  ]
+}

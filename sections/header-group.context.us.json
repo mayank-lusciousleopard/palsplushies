@@ -1,0 +1,24 @@
+{
+  "parent": "header-group.json",
+  "context": {
+    "market": "us"
+  },
+  "sections": {
+    "announcement-bar": {
+      "settings": {},
+      "blocks": {
+        "announcement-bar-0": {
+          "settings": {
+            "text": "Free Shipping for orders above 40$"
+          }
+        }
+      }
+    },
+    "header": {
+      "settings": {
+        "enable_country_selector": true
+      },
+      "blocks": {}
+    }
+  }
+}

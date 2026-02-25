@@ -1,0 +1,569 @@
+{% comment %}
+  New Announcement Bar Section
+  - Includes Discount Text, Flash Sale Text, Countdown Timer, and Country Selector
+  - Sticky behavior with color change on scroll
+{% endcomment %}
+
+{%- style -%}
+  .new-announcement-bar-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    font-family: var(--font-body-family);
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.05rem;
+  }
+
+  /* Default State Colors */
+  .new-announcement-bar-wrapper {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+  }
+  .new-announcement-bar-wrapper svg path {
+    fill: {{ section.settings.text_color }};
+    transition: fill 0.3s ease;
+  }
+  .nab-pill {
+    background-color: {{ section.settings.timer_bg }};
+    color: {{ section.settings.timer_text }};
+  }
+  .nab-selector, .nab-localization-wrapper button.disclosure__button {
+    background-color: {{ section.settings.selector_bg }};
+    color: {{ section.settings.selector_text }};
+  }
+  .nab-localization-wrapper button.disclosure__button:after, .nab-localization-wrapper button.disclosure__button:before {
+    display: none;
+}
+.nab-localization-wrapper button.disclosure__button {
+    padding: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 4rem;
+    min-height: unset;
+    height: max-content;
+    letter-spacing: 0;
+}
+  
+
+  /* Sticky State Colors */
+  .new-announcement-bar-wrapper.is-sticky {
+    background-color: {{ section.settings.sticky_bg_color }};
+    color: {{ section.settings.sticky_text_color }};
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        position: fixed;
+  }
+  .new-announcement-bar-wrapper.is-sticky svg path {
+    fill: {{ section.settings.sticky_text_color }};
+  }
+  .new-announcement-bar-wrapper.is-sticky .nab-pill {
+    background-color: {{ section.settings.sticky_timer_bg }};
+    color: {{ section.settings.sticky_timer_text }};
+  }
+  .new-announcement-bar-wrapper.is-sticky .nab-selector, .nab-localization-wrapper button.disclosure__button {
+    background-color: {{ section.settings.sticky_selector_bg }};
+    color: {{ section.settings.sticky_selector_text }};
+  }
+  /* Specific stroke adjustment for chevron if needed */
+  .new-announcement-bar-wrapper.is-sticky .nab-selector svg.icon-chevron path, .nab-localization-wrapper button.disclosure__button svg path {
+    /* stroke: {{ section.settings.sticky_selector_text }}; */
+    fill: #2e2a39;
+  }
+  .new-announcement-bar-wrapper:not(.is-sticky) .nab-selector svg.icon-chevron path, .nab-localization-wrapper button.disclosure__button svg path {
+    /* stroke: {{ section.settings.selector_text }}; */
+    fill: #2e2a39;
+  }
+
+  .nab-localization-wrapper button.disclosure__button {
+    margin: 0 !important;
+}
+  /* Layout */
+  .nab-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .nab-left, .nab-center, .nab-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nab-center {
+    flex: 2;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .nab-right {
+    gap: 15px;
+  }
+
+  /* Icons */
+  .nab-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nab-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Text */
+  .nab-text {
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Timer & Selector Pills */
+  .nab-pill, .nab-selector {
+    padding: 8px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .nab-pill {
+    font-variant-numeric: tabular-nums;
+    min-width: 150px;
+    justify-content: center;
+  }
+
+  /* Localization Form Custom Styling */
+  .nab-localization-wrapper {
+    position: relative;
+  }
+  .nab-selector {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  .nab-selector svg.icon-chevron {
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+  }
+  
+  .nab-dropdown {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    min-width: 240px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    color: #333;
+    text-align: left;
+  }
+  .nab-dropdown.is-open {
+    display: flex;
+  }
+  .nab-dropdown button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.3rem;
+    width: 100%;
+    transition: background 0.2s;
+  }
+  .nab-dropdown button:hover { 
+    background-color: #f5f5f5;
+  }
+  .nab-dropdown button[aria-current="true"] {
+    font-weight: bold;
+    background-color: #f0f0f0;
+  }
+.nab-center-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nab-localization-wrapper form#HeaderCountryForm {
+    margin-right: 0;
+}
+span.nab-text {
+    text-align: left;
+    letter-spacing: 0;
+}
+.nab-localization-wrapper .desktop-localization-wrapper .disclosure__list-wrapper {
+    top: 100%;
+    left: unset;
+    right: 0;
+    overflow: visible;
+}
+.nab-localization-wrapper .desktop-localization-wrapper div#HeaderCountry-country-results {
+    background: #fff;
+}
+  /* Responsive */
+  @media screen and (max-width: 990px) {
+    .nab-container {
+      flex-direction: column;
+      padding: 10px;
+      gap: 5px;
+    }
+    .nab-text {
+      font-size: 1.1rem;
+      white-space: normal;
+    }
+    .nab-center {
+      order: -1;
+      width: 100%;
+    }
+    .nab-left, .nab-right {
+      width: 100%;
+      justify-content: center;
+    }
+    .new-announcement-bar-wrapper {
+      position: relative;
+    }
+    .nab-right, .nab-left {
+    display: none;
+}
+.nab-pill {
+    padding: 5px 10px;
+    min-width: max-content;
+}
+span.nab-text {
+    font-size: 9px;
+}
+.nab-pill {
+    font-size: 10px;
+        letter-spacing: 0;
+}
+.nab-icon {
+    width: 14px;
+    height: 14px;
+}
+.nab-center {
+    display: flex;
+    justify-content: space-between;
+}
+  }
+{%- endstyle -%}
+
+<div class="new-announcement-bar-wrapper" id="nab-wrapper">
+  <div class="nab-container">
+    
+    <!-- Left: Offer -->
+    <div class="nab-left">
+      <div class="nab-icon">
+        {%- if section.settings.icon_1 != blank -%}
+          {{ section.settings.icon_1 }}
+        {%- else -%}
+          <!-- Default Gift Icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 7h-3.19c.47-1.16.59-2.61-.31-3.83-.93-1.26-2.69-1.57-4.14-.73-.55.32-1.25.99-1.36 1.11-.11-.13-.81-.79-1.36-1.11-1.45-.84-3.21-.52-4.14.73-.9 1.22-.78 2.67-.31 3.83H2v4h2v9h16v-9h2V7zm-8.5-3.23c.31-.18 1.14-.14 1.58.46.42.56.28 1.31-.08 2.21-.07.17-.46.99-1.5 2.06V5.41s0-.01 0 0zm-5.08.46c.44-.6 1.27-.64 1.58-.46 0 0 0 .01 0 0v3.06C6.96 5.8 6.57 4.98 6.5 4.81c-.36-.9-.5-1.65-.08-2.21zM5.5 13h5.5v7H5.5v-7zm13 7h-5.5v-7h5.5v7z"/>
+          </svg>
+        {%- endif -%}
+      </div>
+      <span class="nab-text">{{ section.settings.text_1 }}</span>
+    </div>
+
+    <!-- Center: Flash Sale -->
+    <div class="nab-center">
+        <div class="nab-center-inner">
+      <div class="nab-icon">
+        {%- if section.settings.icon_2 != blank -%}
+          {{ section.settings.icon_2 }}
+        {%- else -%}
+          <!-- Default Lightning Icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 2v11h3v9l7-12h-4l4-8H7z"/>
+          </svg>
+        {%- endif -%}
+      </div>
+      <span class="nab-text">{{ section.settings.text_2 }}</span>
+      </div>
+      <!-- Timer -->
+      <div class="nab-pill">
+        <div class="nab-icon">
+          {%- if section.settings.icon_3 != blank -%}
+            {{ section.settings.icon_3 }}
+          {%- else -%}
+            <!-- Default Clock Icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+               <circle cx="12" cy="12" r="10"></circle>
+               <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          {%- endif -%}
+        </div>
+        <span id="nab-timer-display">00 : 00 : 00</span>
+      </div>
+    
+    </div>
+
+    <!-- Right: Timer & Selector -->
+    <div class="nab-right">
+      
+
+      <!-- Country Selector -->
+      {%- if section.settings.enable_country_selector -%}
+        <div class="nab-localization-wrapper">
+          <div class="desktop-localization-wrapper">
+          <localization-form class="small-hide medium-hide" data-prevent-hide>
+            {%- form 'localization', id: 'HeaderCountryForm', class: 'localization-form' -%}
+              <div>
+                <h2 class="visually-hidden" id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
+                {%- render 'country-localization', localPosition: 'HeaderCountry' -%}
+              </div>
+            {%- endform -%}
+          </localization-form>
+        </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // --- Sticky Logic ---
+  const nab = document.getElementById('nab-wrapper');
+  if (nab) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 10) {
+        nab.classList.add('is-sticky');
+      } else {
+        nab.classList.remove('is-sticky');
+      }
+    });
+  }
+
+  // --- Timer Logic (24h loop) ---
+  const timerDisplay = document.getElementById('nab-timer-display');
+  if (timerDisplay) {
+    const durationHours = {{ section.settings.timer_hours | default: 24 }};
+    const storageKey = 'nab_timer_end_v1'; // Version key to reset if needed
+
+    function getEndTime() {
+      let stored = localStorage.getItem(storageKey);
+      let now = new Date().getTime();
+      if (stored) {
+        if (parseInt(stored) > now) {
+          return parseInt(stored);
+        }
+      }
+      // Set new end time: Now + Duration
+      let newEnd = now + (durationHours * 60 * 60 * 1000);
+      localStorage.setItem(storageKey, newEnd);
+      return newEnd;
+    }
+
+    let endTime = getEndTime();
+
+    function updateTimer() {
+      let now = new Date().getTime();
+      let distance = endTime - now;
+
+      if (distance < 0) {
+        // Reset timer
+        endTime = new Date().getTime() + (durationHours * 60 * 60 * 1000);
+        localStorage.setItem(storageKey, endTime);
+        distance = endTime - now;
+      }
+
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const format = (num) => num < 10 ? '0' + num : num;
+      timerDisplay.innerHTML = `${format(hours)} : ${format(minutes)} : ${format(seconds)}`;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  }
+
+  // --- Country Selector Logic ---
+  const selectorBtn = document.getElementById('nab-selector-btn');
+  const dropdown = document.getElementById('nab-dropdown');
+  if (selectorBtn && dropdown) {
+    selectorBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('is-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target) && !selectorBtn.contains(e.target)) {
+        dropdown.classList.remove('is-open');
+      }
+    });
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "New Announcement Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Default Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFF5F5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text/Icon Color",
+      "default": "#E54E4E"
+    },
+    {
+      "type": "color",
+      "id": "timer_bg",
+      "label": "Timer Background",
+      "default": "#FFE4E4"
+    },
+    {
+      "type": "color",
+      "id": "timer_text",
+      "label": "Timer Text Color",
+      "default": "#E54E4E"
+    },
+    {
+      "type": "color",
+      "id": "selector_bg",
+      "label": "Selector Background",
+      "default": "#FFE4E4"
+    },
+    {
+      "type": "color",
+      "id": "selector_text",
+      "label": "Selector Text Color",
+      "default": "#E54E4E"
+    },
+    {
+      "type": "header",
+      "content": "Sticky Colors (After Scroll)"
+    },
+    {
+      "type": "color",
+      "id": "sticky_bg_color",
+      "label": "Background Color",
+      "default": "#E54E4E"
+    },
+    {
+      "type": "color",
+      "id": "sticky_text_color",
+      "label": "Text/Icon Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "sticky_timer_bg",
+      "label": "Timer Background",
+      "default": "#FF8F8F"
+    },
+    {
+      "type": "color",
+      "id": "sticky_timer_text",
+      "label": "Timer Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "sticky_selector_bg",
+      "label": "Selector Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "sticky_selector_text",
+      "label": "Selector Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Left Content (Offer)"
+    },
+    {
+      "type": "html",
+      "id": "icon_1",
+      "label": "Icon SVG (Gift)",
+      "info": "Paste SVG code here. Leave blank for default."
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "Text",
+      "default": "LIMITED TIME OFFER!"
+    },
+    {
+      "type": "header",
+      "content": "Center Content (Flash Sale)"
+    },
+    {
+      "type": "html",
+      "id": "icon_2",
+      "label": "Icon SVG (Lightning)",
+      "info": "Paste SVG code here. Leave blank for default."
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Text",
+      "default": "FLASH SALE ENDS SOON! ONLY A FEW LEFT – GRAB YOURS NOW"
+    },
+    {
+      "type": "header",
+      "content": "Timer Settings"
+    },
+    {
+      "type": "html",
+      "id": "icon_3",
+      "label": "Icon SVG (Clock)",
+      "info": "Paste SVG code here. Leave blank for default."
+    },
+    {
+      "type": "number",
+      "id": "timer_hours",
+      "label": "Timer Duration (Hours)",
+      "default": 24,
+      "info": "Countdown loop duration in hours."
+    },
+    {
+      "type": "header",
+      "content": "Localization"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "label": "Enable Country Selector",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Announcement Bar"
+    }
+  ]
+}
+{% endschema %}
