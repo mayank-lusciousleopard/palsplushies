@@ -177,7 +177,11 @@
         "mobile_thumbnails": "hide",
         "hide_variants": false,
         "enable_video_looping": false,
+<<<<<<< HEAD
         "padding_top": 36,
+=======
+        "padding_top": 24,
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
         "padding_bottom": 24
       }
     },

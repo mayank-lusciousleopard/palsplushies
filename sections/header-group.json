@@ -24,7 +24,10 @@
         "announcement_p43PQy",
         "announcement-bar-0"
       ],
+<<<<<<< HEAD
       "disabled": true,
+=======
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
       "settings": {
         "color_scheme": "scheme-5",
         "show_line_separator": true,
@@ -35,6 +38,7 @@
         "enable_language_selector": false
       }
     },
+<<<<<<< HEAD
     "new_announcement_bar_c9YFA8": {
       "type": "new-announcement-bar",
       "name": "New Announcement Bar",
@@ -68,6 +72,15 @@
         "menu": "new-main-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "none",
+=======
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "top-center",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
         "show_line_separator": false,
         "color_scheme": "scheme-1",
         "menu_color_scheme": "scheme-1",
@@ -86,7 +99,10 @@
   },
   "order": [
     "announcement-bar",
+<<<<<<< HEAD
     "new_announcement_bar_c9YFA8",
+=======
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
     "header",
     "177072057812ce3bed"
   ]

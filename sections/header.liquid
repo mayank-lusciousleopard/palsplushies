@@ -134,7 +134,11 @@
   endfor
 -%}
 
+<<<<<<< HEAD
 <{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} id="sticky-header" class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %} {% if template.name == 'index' and section.settings.transparent_header %}sticky-header-transparent{% endif %}">
+=======
+<{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
   {%- liquid
     assign social_links = false
     assign localization_forms = false
@@ -187,7 +191,10 @@
         </h1>
       {%- endif -%}
     {%- endif -%}
+<<<<<<< HEAD
     {% render 'header-search-desk', input_id: 'Search-In-Modal' %}
+=======
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
 
     {%- liquid
       if section.settings.menu != blank
@@ -198,7 +205,10 @@
         endif
       endif
     %}
+<<<<<<< HEAD
     
+=======
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
 
     {%- if section.settings.logo_position == 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
@@ -462,6 +472,7 @@
   </script>
 {%- endif -%}
 
+<<<<<<< HEAD
 
 {% if template.name == 'index' and section.settings.transparent_header %}
 {% style %}
@@ -539,6 +550,8 @@
 </style>
 {% endif %}  
 
+=======
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
 {% schema %}
 {
   "name": "t:sections.header.name",
@@ -546,6 +559,7 @@
   "max_blocks": 3,
   "settings": [
     {
+<<<<<<< HEAD
       "type": "header",
       "content": "Transparent Header"
     },
@@ -556,6 +570,8 @@
       "default": false
     },
     {
+=======
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
       "type": "select",
       "id": "logo_position",
       "options": [

@@ -1,7 +1,11 @@
 {
   "current": {
     "logo": "shopify:\/\/shop_images\/Palplushiesv1.png",
+<<<<<<< HEAD
     "logo_width": 90,
+=======
+    "logo_width": 140,
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
     "favicon": "shopify:\/\/shop_images\/Palplushiesv1square.png",
     "type_header_font": "harmonia_sans_n6",
     "heading_scale": 100,
@@ -191,6 +195,14 @@
           "custom_switcher_border_color": "#000000"
         }
       },
+<<<<<<< HEAD
+=======
+      "7147999719060634790": {
+        "type": "shopify:\/\/apps\/gsc-countdown-timer\/blocks\/countdown-bar\/58dc5b1b-43d2-4209-b1f3-52aff31643ed",
+        "disabled": false,
+        "settings": {}
+      },
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
       "855628211100114053": {
         "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
@@ -208,11 +220,32 @@
         "disabled": false,
         "settings": {}
       },
+<<<<<<< HEAD
+=======
+      "8605505498557855500": {
+        "type": "shopify:\/\/apps\/bogos-io-free-gift\/blocks\/app-embed\/0432bba6-720a-4e95-be5a-b868386f7aa6",
+        "disabled": true,
+        "settings": {}
+      },
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
       "6770548097779500122": {
         "type": "shopify:\/\/apps\/koala-upsells-gifts\/blocks\/gifts-embed\/baf92dc5-8ffa-40c0-967e-57b74cddc9e3",
         "disabled": true,
         "settings": {}
       },
+<<<<<<< HEAD
+=======
+      "753360823172887587": {
+        "type": "shopify:\/\/apps\/crazyrocket-spin-wheel-pop-ups\/blocks\/crazyrocket-script\/31762d47-a891-447e-9769-ef8b68621ed4",
+        "disabled": true,
+        "settings": {}
+      },
+      "8034304778247043794": {
+        "type": "shopify:\/\/apps\/woohoo-spin-wheel-email-popup\/blocks\/app-embed\/0199d2e8-54ff-7192-a350-81adbeaf50f6",
+        "disabled": true,
+        "settings": {}
+      },
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
       "17920835415960095625": {
         "type": "shopify:\/\/apps\/swatch-king\/blocks\/variant-swatch-king\/0850b1e4-ba30-4a0d-a8f4-f9a939276d7d",
         "disabled": true,
@@ -222,11 +255,14 @@
           "switch_on_hover": true,
           "preselect_variant": false
         }
+<<<<<<< HEAD
       },
       "7147999719060634790": {
         "type": "shopify:\/\/apps\/gsc-countdown-timer\/blocks\/countdown-bar\/58dc5b1b-43d2-4209-b1f3-52aff31643ed",
         "disabled": true,
         "settings": {}
+=======
+>>>>>>> 723edf803cc54bc9c2989115bbfdb4c20cf4a821
       }
     },
     "color_schemes": {
