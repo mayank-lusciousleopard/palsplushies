@@ -1,0 +1,47 @@
+{
+  "context": {
+    "market": "us"
+  },
+  "parent": "product.chillet.json",
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "variant_picker": {
+          "disabled": true,
+          "settings": {}
+        },
+        "custom_liquid_yydVi": {
+          "type": "custom_liquid",
+          "disabled": false,
+          "settings": {
+            "custom_liquid": "<div class=\"custom-variant-ui-v4\" id=\"ProductUI-{{ section.id }}-{{ product.id }}\">\n  <div class=\"swatch-section\">\n    <label class=\"ui-label\">Animals<\/label>\n    <div class=\"variant-swatch-grid\">\n      {%- assign colors_seen = \"\" -%}\n      {% for variant in product.variants %}\n        {%- assign color_val = variant.options[0] -%}\n        {%- unless colors_seen contains color_val -%}\n\n          {%- assign key = color_val | downcase -%}\n          {%- case key -%}\n            {%- when 'blue' -%}{% assign bg='#dbeafe' %}{% assign border='#3b82f6' %}\n            {%- when 'pink' -%}{% assign bg='#fde2e4' %}{% assign border='#ec4899' %}\n            {%- when 'yellow' -%}{% assign bg='#fef9c3' %}{% assign border='#eab308' %}\n            {%- when 'orange' -%}{% assign bg='#ffedd5' %}{% assign border='#f97316' %}\n            {%- when 'black' -%}{% assign bg='#e5e7eb' %}{% assign border='#111827' %}\n            {%- when 'white' -%}{% assign bg='#f3f4f6' %}{% assign border='#9ca3af' %}\n            {%- when 'brown' -%}{% assign bg='#f5ebe0' %}{% assign border='#92400e' %}\n            {%- else -%}{% assign bg='#f8f8f8' %}{% assign border='#444' %}\n          {%- endcase -%}\n\n          <label class=\"variant-card\">\n            <input\n              type=\"radio\"\n              name=\"swatch_color_{{ section.id }}\"\n              value=\"{{ color_val | escape }}\"\n              class=\"color-swatch-input\"\n              data-bg=\"{{ bg }}\"\n              {% if product.selected_or_first_available_variant.options[0] == color_val %}checked{% endif %}\n              hidden\n            >\n            <div class=\"variant-card-inner\" style=\"background: {{ bg }}; --border-color: {{ border }};\">\n              <img src=\"{{ variant.featured_media | default: product.featured_media | image_url: width: 300 }}\" loading=\"lazy\">\n              <div class=\"variant-info\">\n                <div class=\"main-title-bold\">{{ color_val | upcase }}<\/div>\n                <div class=\"price-pill-sm\">{{ variant.price | money }}<\/div>\n              <\/div>\n            <\/div>\n          <\/label>\n          {%- assign colors_seen = colors_seen | append: color_val | append: \",\" -%}\n        {%- endunless -%}\n      {% endfor %}\n    <\/div>\n  <\/div>\n\n  <div class=\"size-section\">\n    <label class=\"ui-label\">Size<\/label>\n    <div class=\"custom-select-wrapper\">\n      <select class=\"custom-size-dropdown\">\n        {% for variant in product.variants %}\n          <option \n            value=\"{{ variant.id }}\" \n            data-color=\"{{ variant.options[0] | escape }}\" \n            data-price=\"{{ variant.price | money }}\"\n            data-image=\"{{ variant.featured_media | default: product.featured_media | image_url: width: 800 }}\"\n            {% if variant.id == product.selected_or_first_available_variant.id %}selected{% endif %}\n          >\n            {{ variant.options[1] | default: variant.title }} — {{ variant.price | money }}\n          <\/option>\n        {% endfor %}\n      <\/select>\n      {% comment %} Default arrow is handled by the browser now {% endcomment %}\n    <\/div>\n  <\/div>\n<\/div>\n\n<style>\n.custom-variant-ui-v4 { margin:20px 0; }\n.ui-label { font-weight:700; margin-bottom:10px; display:block; }\n\n.variant-swatch-grid {\n  display:grid;\n  grid-template-columns: repeat(4,1fr);\n  gap:8px;\n  margin-bottom:20px;\n}\n\n.variant-card-inner {\n  border:1px solid #e5e5e5;\n  padding:6px;\n  border-radius:10px;\n  text-align:center;\n  transition:.2s;\n}\n\n.variant-card input:checked + .variant-card-inner {\n  border:2px solid var(--border-color);\n}\n\n.variant-card img {\n  width:100%;\n  aspect-ratio:1\/1;\n  object-fit:cover;\n  border-radius:6px;\n}\n\n.main-title-bold {\n  font-size:11px;\n  font-weight:800;\n  margin-top:6px;\n}\n\n.price-pill-sm {\n  display:inline-block;\n  background:#fff;\n  padding:3px 10px;\n  border-radius:999px;\n  font-size:10px;\n  color:#333;\n  margin-top:5px;\n  border:1px solid rgba(0,0,0,0.08);\n  box-shadow:0 1px 2px rgba(0,0,0,0.06);\n}\n\n.custom-size-dropdown {\n  width:100%;\n  padding:12px 15px;\n  \/* Appearance auto restores the default OS\/Browser arrow *\/\n  appearance: auto;\n  -webkit-appearance: auto;\n  border: 1px solid #ddd;\n  border-radius: 8px;\n  font-weight: 700;\n  font-size: 14px;\n  transition: background-color 0.3s ease;\n  cursor: pointer;\n}\n\n@media(max-width:749px){\n  .variant-swatch-grid { grid-template-columns: repeat(2,1fr); }\n  .custom-size-dropdown { padding: 14px; font-size: 16px; }\n}\n<\/style>\n\n<script>\n(function() {\n  const container = document.querySelector('#ProductUI-{{ section.id }}-{{ product.id }}');\n  if (!container) return;\n\n  const section = container.closest('.shopify-section');\n  const sizeSelect = container.querySelector('.custom-size-dropdown');\n  const colorInputs = container.querySelectorAll('.color-swatch-input');\n\n  function updateMaster(id, price, image) {\n    section.querySelectorAll('input[name=\"id\"]').forEach(input => {\n      input.value = id;\n      input.dispatchEvent(new Event('change', { bubbles: true }));\n    });\n\n    section.querySelectorAll('.price-item--regular, .price__regular .price-item')\n      .forEach(el => el.textContent = price);\n\n    \/\/ Support both Dawn and Featured Product media\n    const img = section.querySelector('.product__media img, .featured-product__media img, .product__main-media img');\n    if (img && image) {\n      img.src = image;\n      img.srcset = image;\n    }\n  }\n\n  function handleSelection(color, bgColor) {\n    let matched = false;\n    \n    \/\/ Sync dropdown background with the animal color\n    sizeSelect.style.backgroundColor = bgColor;\n\n    Array.from(sizeSelect.options).forEach(opt => {\n      if (opt.dataset.color === color) {\n        opt.style.display = 'block';\n        if (!matched) {\n          opt.selected = true;\n          updateMaster(opt.value, opt.dataset.price, opt.dataset.image);\n          matched = true;\n        }\n      } else {\n        opt.style.display = 'none';\n      }\n    });\n  }\n\n  colorInputs.forEach(input => {\n    input.addEventListener('change', function() {\n      handleSelection(this.value, this.dataset.bg);\n    });\n  });\n\n  sizeSelect.addEventListener('change', function() {\n    const opt = this.options[this.selectedIndex];\n    updateMaster(this.value, opt.dataset.price, opt.dataset.image);\n  });\n\n  \/\/ Initialization\n  const initialChecked = container.querySelector('.color-input:checked, .color-swatch-input:checked');\n  if (initialChecked) {\n    sizeSelect.style.backgroundColor = initialChecked.dataset.bg;\n  }\n})();\n<\/script>"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_DCFqgF",
+        "judge_me_reviews_preview_badge_4KmDNy",
+        "custom_liquid_CAtWHW",
+        "title",
+        "custom_liquid_GYqUc9",
+        "price",
+        "google_youtube_automated_discounts_price_QecmgT",
+        "variant_picker",
+        "custom_liquid_yydVi",
+        "quantity_selector",
+        "buy_buttons",
+        "custom_liquid_ADbiNH",
+        "custom_liquid_XPUDR4",
+        "text_HH6Tda",
+        "collapsible_tab_cjDDPP",
+        "collapsible_tab_WmVjBf",
+        "collapsible_tab_TtPQrL",
+        "collapsible_tab_TfLFEk",
+        "description",
+        "share",
+        "judge_me_reviews_review_widget_TwyhpJ"
+      ]
+    }
+  }
+}

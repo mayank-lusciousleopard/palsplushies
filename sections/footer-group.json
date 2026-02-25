@@ -1,0 +1,129 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "ss_wave_2_fxYxCV": {
+      "type": "ss-wave-2",
+      "name": "SS - Wave #2",
+      "settings": {
+        "wave_height": 94,
+        "wave_height_mobile": 80,
+        "wave_animation": true,
+        "wave_rotate": false,
+        "wave_color": "#ec5757",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "full_width": true,
+        "content_width": 120,
+        "border_thickness": 0
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Don't lose new products",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Join our email list for exclusive offers and new product discounts!!<\/p>"
+          }
+        },
+        "email-form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email-form"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-5d6273df-e18b-4c35-a185-6808cd96c934",
+        "full_width": true,
+        "padding_top": 44,
+        "padding_bottom": 8
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_Mk7DGL": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Pick your kind",
+            "menu": "pick-your-kind"
+          }
+        },
+        "link_list_UntPbY": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Other Links",
+            "menu": "other-links"
+          }
+        },
+        "link_list_TR3eB9": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Our Policies",
+            "menu": "footer"
+          }
+        },
+        "countryregion_rneLCT": {
+          "type": "countryregion",
+          "settings": {}
+        },
+        "text_wKEADd": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "subtext": "<p>30 North Gould Street STE R Sheridan Wyoming 82801<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_Mk7DGL",
+        "link_list_UntPbY",
+        "link_list_TR3eB9",
+        "countryregion_rneLCT",
+        "text_wKEADd"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4fa20b9c-1fd6-4a08-960e-f499775a3eef",
+        "newsletter_enable": true,
+        "newsletter_heading": "Just send us your contact email and we will contact you.",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "heading": "<p>Stay<\/p>",
+        "boldheading": "<p><strong>Tuned!!<\/strong><\/p>",
+        "highlight_text": "<p>The cutest arrivals are on their way!<\/p>",
+        "margin_top": 0,
+        "padding_top": 44,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "ss_wave_2_fxYxCV",
+    "newsletter",
+    "footer"
+  ]
+}

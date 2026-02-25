@@ -1,0 +1,44 @@
+<section> 
+    <div class="page-width">
+       <div class="custom-img-container">
+         <img src="{{ section.settings.custom_img | img_url:'master'}}">
+       </div>
+    </div>
+</section>
+
+<style>
+    .custom-img-container{
+      display:flex;
+       justify-content:center;
+       align-items:center;
+    }
+    .custom-img-container img{
+      width:100%;
+    }
+
+    @media (min-width:769px){
+     .custom-img-container img{
+       max-width : 700px;
+     }
+    }
+</style>
+
+{% schema %}
+{
+    "name": "custom-video",
+     "settings": [
+       {
+        "type": "image_picker",
+         "id": "custom_img",
+          "label": "Choose image"
+       },
+
+     ],
+
+     "presets": [
+        {
+            "name": "only_img_section"
+        }
+     ]
+}
+{% endschema %}

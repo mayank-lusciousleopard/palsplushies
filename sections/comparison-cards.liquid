@@ -1,0 +1,187 @@
+<section class="comparison-section">
+
+  <div class="comparison-wrapper">
+
+    <div class="comparison-col">
+      {% if section.settings.left_title != blank %}
+        <h3 class="card-title">{{ section.settings.left_title }}</h3>
+      {% endif %}
+
+      <div class="comparison-card left">
+        {% if section.settings.left_image %}
+          <img src="{{ section.settings.left_image | image_url: width: 800 }}" alt="">
+        {% endif %}
+
+        <ul>
+          {% for block in section.blocks %}
+            {% if block.type == 'left_item' %}
+              <li>
+                <span class="icon check">✔</span>
+                {{ block.settings.text }}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="comparison-col">
+      {% if section.settings.right_title != blank %}
+        <h3 class="card-title">{{ section.settings.right_title }}</h3>
+      {% endif %}
+
+      <div class="comparison-card right">
+        {% if section.settings.right_image %}
+          <img src="{{ section.settings.right_image | image_url: width: 800 }}" alt="">
+        {% endif %}
+
+        <ul>
+          {% for block in section.blocks %}
+            {% if block.type == 'right_item' %}
+              <li>
+                <span class="icon cross">✖</span>
+                {{ block.settings.text }}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.comparison-section {
+  padding: 30px 20px;
+}
+
+.comparison-wrapper {
+  max-width: 750px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.comparison-section .card-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.comparison-card {
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.comparison-card.left {
+  background: {{ section.settings.left_bg }};
+}
+
+.comparison-card.right {
+  background: {{ section.settings.right_bg }};
+}
+
+.comparison-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.comparison-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comparison-card li {
+  display: flex;
+  align-items:center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size:1.5rem;
+}
+
+.comparison-section .icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+}
+
+.check { background: #22c55e; }
+.cross { background: #ef4444; }
+
+@media (max-width: 768px) {
+  .comparison-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Comparison cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "left_title",
+      "label": "Left card title",
+      "default": "Our snuggle pals"
+    },
+    {
+      "type": "text",
+      "id": "right_title",
+      "label": "Right card title",
+      "default": "Other plushies"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right image"
+    },
+    {
+      "type": "color",
+      "id": "left_bg",
+      "label": "Left background",
+      "default": "#d1fae5"
+    },
+    {
+      "type": "color",
+      "id": "right_bg",
+      "label": "Right background",
+      "default": "#fee2e2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "left_item",
+      "name": "Left bullet",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "right_item",
+      "name": "Right bullet",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Comparison cards" }
+  ]
+}
+{% endschema %}
